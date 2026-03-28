@@ -32,22 +32,43 @@
             background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
         }
 
+        /* 強化文字懸浮效果 */
+        .interactive-text {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease, text-shadow 0.3s ease;
+            display: inline-block;
+        }
+        
+        .interactive-text:hover {
+            transform: translateY(-5px) scale(1.01);
+            color: #fff;
+            text-shadow: 0 10px 20px rgba(96, 165, 250, 0.3);
+        }
+
         .card-hover:hover {
             transform: translateY(-5px);
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px -10px rgba(96, 165, 250, 0.3);
         }
 
-        /* 影片容器與封面 */
+        /* 隱藏滾動條但保持功能 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 影片容器 */
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
+            padding-bottom: 56.25%; /* 16:9 比例 */
             height: 0;
             overflow: hidden;
             border-radius: 1.5rem;
             background: #000;
         }
-        .video-wrapper iframe, .video-wrapper .poster {
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -55,25 +76,6 @@
             height: 100%;
             border-radius: 1.5rem;
             border: none;
-        }
-        .video-wrapper .poster {
-            z-index: 10;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.3s ease;
-        }
-        .play-btn {
-            width: 72px;
-            height: 72px;
-            background: rgba(59, 130, 246, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
         }
 
         ::-webkit-scrollbar { width: 8px; }
@@ -89,7 +91,7 @@
             <div class="text-2xl font-bold tracking-tighter gradient-text">Jia0268</div>
             <div class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="#about" class="hover:text-blue-400 transition">關於我</a>
-                <a href="#projects" class="hover:text-blue-400 transition">核心作品</a>
+                <a href="#projects" class="hover:text-blue-400 transition">作品集</a>
                 <a href="#experience" class="hover:text-blue-400 transition">學經歷</a>
                 <a href="#certificates" class="hover:text-blue-400 transition">榮譽證明</a>
                 <a href="#contact" class="hover:text-blue-400 transition">聯繫方式</a>
@@ -99,8 +101,8 @@
     </nav>
 
     <!-- 英雄區 (Hero) -->
-    <section id="about" class="relative min-h-screen flex items-center pt-32 pb-20 px-6 overflow-hidden text-left">
-        <div class="absolute inset-0 z-0">
+    <section id="about" class="relative min-h-screen flex items-center pt-32 pb-20 px-6 overflow-hidden text-left z-10">
+        <div class="absolute inset-0 z-0 pointer-events-none">
             <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[150px]"></div>
             <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[150px]"></div>
         </div>
@@ -111,22 +113,21 @@
                     Innovation & Curiosity
                 </div>
                 <h1 class="text-5xl md:text-6xl font-bold mb-8 leading-tight text-white text-left">
-                    不受拘束的<br>
-                    <span class="gradient-text">跨域創新者</span>
+                    <span class="interactive-text">不受拘束的</span><br>
+                    <span class="gradient-text interactive-text">跨域創新者</span>
                 </h1>
-                <div class="text-lg text-slate-400 mb-10 max-w-xl leading-relaxed space-y-4 text-left">
-                    <p>我是 <span class="text-white font-bold">黃子珈</span>，現就讀於 <span class="text-white border-b border-blue-500/50">國立清華大學學習科學與科技研究所</span>。</p>
-                    <p>憑藉人工智慧的開發背景，我致力於透過沉浸式 XR 技術與學習理論，開發生成式 AI 融入教學的智慧互動體驗。</p>
-                    <p>我對新興科技充滿好奇，喜歡挑戰創新，熱衷於探索各類新奇事物。對我而言，技術不只是解決問題的工具，更是實踐不受拘束的創意、打破現實邊界的媒介。</p>
+                <div class="text-lg text-slate-400 mb-10 max-w-xl leading-relaxed space-y-6 text-left">
+                    <p class="interactive-text">我是 <span class="text-white font-bold">黃子珈</span>，現就讀於 <span class="text-white border-b border-blue-500/50">國立清華大學學習科學與科技研究所</span>。</p>
+                    <p class="interactive-text">憑藉人工智慧的開發背景，我致力於透過沉浸式 XR 技術與學習理論，開發生成式 AI 融入教學的智慧互動體驗。</p>
+                    <p class="interactive-text">我對新興科技充滿好奇，喜歡挑戰創新，熱衷於探索各類新奇事物。對我而言，技術不只是解決問題的工具，更是實踐不受拘束的創意、打破現實邊界的媒介。</p>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-4">
+                <div class="flex flex-col sm:flex-row gap-4 text-left">
                     <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-3 rounded-xl font-semibold transition flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20">
-                        查看核心專案 <i data-lucide="chevron-right" size="18"></i>
+                        查看專案展示 <i data-lucide="chevron-right" size="18"></i>
                     </a>
                 </div>
             </div>
             <div class="flex justify-center lg:justify-end relative">
-                <!-- 第一張照片比例 4:5 -->
                 <div class="relative w-full max-w-[340px] aspect-[4/5] group">
                     <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-3xl rotate-3 opacity-20 group-hover:rotate-1 transition-transform duration-500"></div>
                     <div class="relative w-full h-full rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl bg-slate-800">
@@ -146,20 +147,20 @@
                 <div class="text-2xl font-bold mb-1">第 1 名</div>
                 <div class="text-slate-400 text-[11px] font-medium leading-relaxed uppercase tracking-widest text-center">智慧創新競賽</div>
             </div>
-            <div class="glass p-6 rounded-3xl text-center card-hover border-purple-500/20">
+            <div class="glass p-6 rounded-3xl text-center card-hover border-purple-500/20 text-center">
                 <div class="text-purple-400 mb-3 flex justify-center"><i data-lucide="mic" size="32"></i></div>
-                <div class="text-2xl font-bold mb-1">Best Presentation</div>
+                <div class="text-xl font-bold mb-1 uppercase tracking-tight text-center">Best Presentation</div>
                 <div class="text-slate-400 text-[11px] font-medium leading-relaxed uppercase tracking-widest text-center">BERA Conference</div>
             </div>
             <div class="glass p-6 rounded-3xl text-center card-hover border-emerald-500/20 text-center">
                 <div class="text-emerald-400 mb-3 flex justify-center"><i data-lucide="star" size="32"></i></div>
                 <div class="text-2xl font-bold mb-1 text-emerald-400">系排一</div>
-                <div class="text-slate-400 text-[11px] font-medium leading-relaxed uppercase tracking-widest">銘傳 AI 系 (1/84)</div>
+                <div class="text-slate-400 text-[11px] font-medium leading-relaxed uppercase tracking-widest text-center">銘傳 AI 系 (1/84)</div>
             </div>
             <div class="glass p-6 rounded-3xl text-center card-hover border-yellow-500/20 text-center">
                 <div class="text-yellow-400 mb-3 flex justify-center"><i data-lucide="line-chart" size="32"></i></div>
                 <div class="text-2xl font-bold mb-1 text-yellow-500">GPA 4.14</div>
-                <div class="text-slate-400 text-[11px] font-medium leading-relaxed uppercase tracking-widest">清大碩士班 (Max 4.3)</div>
+                <div class="text-slate-400 text-[11px] font-medium leading-relaxed uppercase tracking-widest text-center text-center">清大碩士班 (Max 4.3)</div>
             </div>
         </div>
     </section>
@@ -172,23 +173,17 @@
                     <h2 class="text-4xl font-bold mb-2 tracking-tight text-white text-left">Build, Brick & Break</h2>
                     <p class="text-slate-400 text-lg text-left">Meta Quest 3 沉浸式樂高拼搭互動系統</p>
                 </div>
-                <div class="text-sm font-mono text-blue-400 mb-2">XR Interaction Design</div>
+                <div class="text-sm font-mono text-blue-400 mb-2 tracking-widest uppercase font-bold text-left">Core Project</div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 glass p-8 rounded-[2.5rem] border-white/5 mb-16 shadow-2xl text-left">
                 <div class="lg:col-span-8 overflow-hidden bg-black shadow-inner">
                     <div class="video-wrapper">
-                        <div id="videoPoster" class="poster" onclick="playVideo()">
-                            <img src="https://drive.google.com/thumbnail?id=1rts0fQIz9__nZUliZgXErjdZuBQ42FcP&sz=w1600" alt="[影片封面]" class="w-full h-full object-cover opacity-60">
-                            <div class="play-btn"><i data-lucide="play" fill="white" size="28" class="text-white ml-1"></i></div>
-                        </div>
-                        <div id="videoContainer" class="hidden w-full h-full">
-                            <iframe id="videoIframe" src="" allow="autoplay; encrypted-media"></iframe>
-                        </div>
+                        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116306154098503&bvid=BV18VX5BsEHd&cid=37044814928&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
                     </div>
                 </div>
                 <div class="lg:col-span-4 flex flex-col justify-center text-left">
-                    <div class="flex flex-wrap gap-2 mb-8 text-[9px] font-bold tracking-widest uppercase">
+                    <div class="flex flex-wrap gap-2 mb-8 text-[9px] font-bold tracking-widest uppercase text-left">
                         <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full border border-blue-500/10">#UNITY</span>
                         <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full border border-blue-500/10">#STEAM</span>
                         <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full border border-blue-500/10">#META SDK</span>
@@ -197,28 +192,29 @@
                     <p class="text-slate-300 text-sm mb-8 leading-relaxed italic border-l-2 border-slate-700 pl-4 text-left">
                         即使身處虛擬世界，依舊能體驗到真實的拼裝樂趣。
                     </p>
-                    <p class="text-[13px] text-slate-400 leading-relaxed mb-8 text-left">
+                    <p class="text-[13px] text-slate-400 leading-relaxed mb-8">
                         結合手勢辨識與手部抓取，打造具遊戲性的 STEAM 學習工具。提供引導與自由模式，並設計「更衣隧道」讓使用者化身樂高小人，在虛擬城市中與角色展開沉浸互動。
                     </p>
-                    <div class="space-y-4">
+                    <div class="space-y-4 text-left">
                         <div class="flex items-center gap-3 text-left">
                             <i data-lucide="sparkles" class="text-blue-400" size="16"></i>
-                            <span class="text-xs text-white">直覺化手部追蹤交互</span>
+                            <span class="text-xs text-white text-left">直覺化手部追蹤交互</span>
                         </div>
                         <div class="flex items-center gap-3 text-left">
                             <i data-lucide="graduation-cap" class="text-blue-400" size="16"></i>
-                            <span class="text-xs text-white">STEAM 教育實作引導</span>
+                            <span class="text-xs text-white text-left">STEAM 教育實作引導</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                <div class="group relative rounded-3xl overflow-hidden glass border-white/10 aspect-[4/3] bg-slate-800">
+            <!-- 核心專案展示照片 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left mb-24">
+                <div class="group relative rounded-3xl overflow-hidden glass border-white/10 aspect-[4/3] bg-slate-800 text-left">
                     <img src="https://drive.google.com/thumbnail?id=1ug5_k8AkDmV5f7PKutr0i4nmLclCg0p4&sz=w1600" alt="[拼搭實作展示]" 
                          class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-700">
                 </div>
-                <div class="group relative rounded-3xl overflow-hidden glass border-white/10 aspect-[4/3] bg-slate-800">
+                <div class="group relative rounded-3xl overflow-hidden glass border-white/10 aspect-[4/3] bg-slate-800 text-left">
                     <img src="https://drive.google.com/thumbnail?id=1HMWsG0Mm98tV2NmXaG9cUheamTY8lxZL&sz=w1600" alt="[專案展示交流]" 
                          class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-700">
                 </div>
@@ -227,6 +223,107 @@
                     <p class="text-[12px] text-slate-400 leading-relaxed text-left">
                         在作品中融入學習科學的「做中學」理念，透過數位孿生技術降低硬體損耗，同時保留空間建構的認知反饋。
                     </p>
+                </div>
+            </div>
+
+            <!-- Innovation Playground 區塊 (附導航按鈕) -->
+            <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4 border-l-4 border-purple-500 pl-6 text-left">
+                <div class="text-left text-left">
+                    <h3 class="text-3xl font-bold mb-2 tracking-tight text-white text-left">Innovation Playground</h3>
+                    <p class="text-slate-400 text-base max-w-3xl text-left">
+                        賈伯斯曾說：「創新即借用與連結。」這是屬於我的技術萌芽基地。記錄我從模仿中磨練技能，進而嘗試將各項技術連結、內化，最終轉化為創意的成長足跡。
+                    </p>
+                </div>
+                <div class="flex gap-4 mb-1">
+                    <button onclick="scrollSandbox('left')" class="p-3 glass rounded-full hover:bg-white/10 transition-all text-white border-white/10">
+                        <i data-lucide="arrow-left" size="18"></i>
+                    </button>
+                    <button onclick="scrollSandbox('right')" class="p-3 glass rounded-full hover:bg-white/10 transition-all text-white border-white/10">
+                        <i data-lucide="arrow-right" size="18"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative text-left">
+                <div id="sandbox-slider" class="flex gap-6 overflow-x-auto hide-scrollbar pb-8 px-2 scroll-smooth">
+                    
+                    <!-- 作品 1: 星期天的我們家哦 (大二上) -->
+                    <div class="min-w-[320px] md:min-w-[450px] glass p-6 rounded-[2rem] border-white/5 card-hover group flex flex-col text-left">
+                        <div class="video-wrapper mb-6 scale-95 origin-center text-left">
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116306288380845&bvid=BV1yxX5BjEWq&cid=37045797501&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                        <h5 class="text-xl font-bold text-white mb-3 tracking-tight text-left">《星期天的我們家哦》</h5>
+                        <p class="text-[12px] text-slate-400 leading-relaxed mb-6 text-left">
+                            大二「遊戲程式設計」課程期末專案。以《蠟筆小新》的角色設定為核心，開發的 ActionScript 互動遊戲。劇情完善並設計關卡與引導動畫，深入探索如何運用極簡圖示實現直覺化導引提示。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto text-left text-left">
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">ActionScript</span>
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">Flash Legacy</span>
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">Visual Guide</span>
+                        </div>
+                    </div>
+
+                    <!-- 作品 2: 被迫營業的機器人蟹老闆 (大二下) -->
+                    <div class="min-w-[320px] md:min-w-[450px] glass p-6 rounded-[2rem] border-white/5 card-hover group flex flex-col text-left">
+                        <div class="video-wrapper mb-6 scale-95 origin-center text-left">
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116306540040154&bvid=BV1RAX5BwES2&cid=25988372924&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                        <h5 class="text-xl font-bold text-white mb-3 tracking-tight text-left">《被迫營業的機器人蟹老闆》</h5>
+                        <p class="text-[12px] text-slate-400 leading-relaxed mb-6 text-left">
+                            大二「電腦圖學」期末專案。使用 C 語言與 OpenGL 開發，並結合 Maya 主角建模。專案核心在於透過程式精確控制模型色彩、光線與照明參數。作品在期末展示中榮獲全班票選第一名，並在 YouTube 收穫萬次點閱。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto text-left">
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">C & OpenGL</span>
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">Rendering</span>
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">Popular Project</span>
+                        </div>
+                    </div>
+
+                    <!-- 作品 3: 虛擬甜點店網站 (大二下) -->
+                    <div class="min-w-[320px] md:min-w-[450px] glass p-6 rounded-[2rem] border-white/5 card-hover group flex flex-col text-left">
+                        <div class="video-wrapper mb-6 scale-95 origin-center text-left">
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116306506418944&bvid=BV1qFX5BPEue&cid=37047108224&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                        <h5 class="text-xl font-bold text-white mb-3 tracking-tight text-left">《虛擬甜點店網站實作》</h5>
+                        <p class="text-[12px] text-slate-400 leading-relaxed mb-6 text-left">
+                            大二「Web程式設計」作品。結合 HTML、CSS 與 PHP 構建品牌網站。從線框圖規劃頁面佈局，到實作購物車、留言板等動態功能，並深入調教響應式設計（RWD）與滑鼠滑過時的視覺回饋。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto text-left">
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">HTML / CSS / PHP</span>
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">Responsive</span>
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">UI Planning</span>
+                        </div>
+                    </div>
+
+                    <!-- 作品 4: 莉露姆做蛋糕 (大三上) -->
+                    <div class="min-w-[320px] md:min-w-[450px] glass p-6 rounded-[2rem] border-white/5 card-hover group flex flex-col text-left">
+                        <div class="video-wrapper mb-6 scale-95 origin-center text-left">
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116306456088376&bvid=BV12zXVBmE3e&cid=37046846475&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                        <h5 class="text-xl font-bold text-white mb-3 tracking-tight text-left">《莉露姆做蛋糕》</h5>
+                        <p class="text-[12px] text-slate-400 leading-relaxed mb-6 text-left">
+                            大三「互動技術概論」期末專案。使用 Java 與 OpenGL 打造結合 2D 顏色混合與 3D 裝飾系統。透過實作攝影機視角切換與打光技術，我初次體會到 3D 空間帶來的沉浸感，也奠定了我對使用者體驗的重視。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto text-left">
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">Java & OpenGL</span>
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">3D Interaction</span>
+                        </div>
+                    </div>
+
+                    <!-- 作品 5: 美冴的一天 (大三上) -->
+                    <div class="min-w-[320px] md:min-w-[450px] glass p-6 rounded-[2rem] border-white/5 card-hover group flex flex-col text-left text-left">
+                        <div class="video-wrapper mb-6 scale-95 origin-center text-left">
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116306456087213&bvid=BV12zXVBmEpd&cid=37044814931&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                        <h5 class="text-xl font-bold text-white mb-3 tracking-tight text-left">《美冴的一天》</h5>
+                        <p class="text-[12px] text-slate-400 leading-relaxed mb-6 text-left">
+                            大三「視窗程式設計」期末專案。使用 C# 於 Visual Studio 開發，嘗試將插圖風格與手機應用模擬結合。透過實作購物車邏輯、計算機與相簿功能，深入探索如何將程式功能與日常生活緊密相連。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto text-left">
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">C# & WinForms</span>
+                            <span class="text-[9px] font-bold bg-white/5 text-slate-500 px-2.5 py-1 rounded-full border border-white/5 uppercase">Application Simulation</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -239,10 +336,10 @@
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
             <div class="flex flex-col gap-6 group text-left">
-                <div class="relative aspect-[1.414/1] rounded-2xl overflow-hidden glass border-2 border-white/5 shadow-xl group-hover:border-blue-500/30 transition-all duration-500">
+                <div class="relative aspect-[1.414/1] rounded-2xl overflow-hidden glass border-2 border-white/5 shadow-xl group-hover:border-blue-500/30 transition-all duration-500 text-left">
                     <img src="https://drive.google.com/thumbnail?id=1CfgQ7_bm9zW7vyplZbpW_ijfUB-pGbVJ&sz=w1600" alt="[比賽獎狀]" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                        <a href="https://drive.google.com/file/d/1CfgQ7_bm9zW7vyplZbpW_ijfUB-pGbVJ/view" target="_blank" class="bg-blue-600 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest">Open File</a>
+                        <a href="https://drive.google.com/file/d/1CfgQ7_bm9zW7vyplZbpW_ijfUB-pGbVJ/view" target="_blank" class="bg-blue-600 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest text-center">Open File</a>
                     </div>
                 </div>
                 <div class="px-2 text-left">
@@ -251,15 +348,15 @@
                 </div>
             </div>
             <div class="flex flex-col gap-6 group text-left">
-                <div class="relative aspect-[1.414/1] rounded-2xl overflow-hidden glass border-2 border-white/5 shadow-xl group-hover:border-blue-500/30 transition-all duration-500">
+                <div class="relative aspect-[1.414/1] rounded-2xl overflow-hidden glass border-2 border-white/5 shadow-xl group-hover:border-purple-500/30 transition-all duration-500 text-left">
                     <img src="https://drive.google.com/thumbnail?id=1vlRpiooNOgYO1ib_NswsF_JavNYNycdi&sz=w1600" alt="[發表獎狀]" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                        <a href="https://drive.google.com/file/d/1vlRpiooNOgYO1ib_NswsF_JavNYNycdi/view" target="_blank" class="bg-purple-600 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest">Open File</a>
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-left">
+                        <a href="https://drive.google.com/file/d/1vlRpiooNOgYO1ib_NswsF_JavNYNycdi/view" target="_blank" class="bg-purple-600 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest text-center">Open File</a>
                     </div>
                 </div>
                 <div class="px-2 text-left">
                     <h5 class="text-lg font-bold text-white text-left text-left">BERA Best Presentation Award</h5>
-                    <p class="text-xs text-slate-500 mt-2 text-left text-left">證明在國際學術研討會中具備優異的發表與論述品質。</p>
+                    <p class="text-xs text-slate-500 mt-2 text-left text-left text-left">證明在國際學術研討會中具備優異的發表與論述品質。</p>
                 </div>
             </div>
         </div>
@@ -274,15 +371,15 @@
             <!-- NTHU -->
             <div class="relative glass p-10 rounded-3xl border-l-8 border-blue-500 overflow-hidden group flex flex-col justify-between text-left">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-110 transition-transform duration-700"></div>
-                <div class="text-left text-left">
-                    <div class="font-bold text-2xl text-white mb-2 text-left text-left">國立清華大學 (NTHU)</div>
-                    <div class="text-blue-400 font-semibold text-base mb-2 text-left text-left">學習科學與科技研究所 | 碩士在讀</div>
+                <div class="text-left">
+                    <div class="font-bold text-2xl text-white mb-2 text-left">國立清華大學 (NTHU)</div>
+                    <div class="text-blue-400 font-semibold text-base mb-2 text-left">學習科學與科技研究所 | 碩士在讀</div>
                     <div class="inline-block px-3 py-1 mb-6 text-[10px] font-bold bg-blue-500/10 text-blue-400 rounded-lg tracking-widest uppercase border border-blue-500/20">GPA 4.14 / 4.3</div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-8 text-left text-left">
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8 text-left">
                         探討生成式 AI 輔助元宇宙沉浸式環境中學習，如何影響學習者認知路徑，並致力於開發更具個人化與直覺性的智慧教學引導系統。
                     </p>
                 </div>
-                <div class="flex flex-wrap gap-3 text-left">
+                <div class="flex flex-wrap gap-3">
                     <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">XR LEARNING</div>
                     <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">C# & Unity</div>
                     <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">DATA ANALYSIS</div>
@@ -292,38 +389,38 @@
             <!-- MCU -->
             <div class="relative glass p-10 rounded-3xl border-l-8 border-emerald-500/30 overflow-hidden flex flex-col justify-between group text-left">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-110 transition-transform duration-700"></div>
-                <div class="text-left text-left">
+                <div class="text-left">
                     <div class="font-bold text-2xl text-white mb-2 text-left text-left">銘傳大學 (MCU)</div>
-                    <div class="text-emerald-400 font-semibold text-base mb-2 text-left text-left">人工智慧應用學系 | 學士畢業</div>
+                    <div class="text-emerald-400 font-semibold text-base mb-2 text-left text-left text-left">人工智慧應用學系 | 學士畢業</div>
                     <div class="inline-block px-3 py-1 mb-6 text-[10px] font-bold bg-emerald-500/10 text-emerald-400 rounded-lg tracking-widest uppercase border border-emerald-500/20">系排一 (1/84)</div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6 text-left text-left">
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 text-left">
                         專注於 C# 程式開發與 電腦圖學 的實踐，並具備豐富的 資料分析、視覺化 及 網頁開發 經驗。具備將模型實作與前端應用整合的能力，是目前 XR 專案開發最強大的技術後盾。
                     </p>
                 </div>
-                <div class="flex flex-wrap gap-3 text-left">
+                <div class="flex flex-wrap gap-3">
                     <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">C# & Unity</div>
                     <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">COMPUTER GRAPHICS</div>
                     <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">WEB DEVELOPMENT</div>
-                    <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">DATA VISUALIZATION</div>
+                    <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest text-left">DATA VISUALIZATION</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 日常靈感碎片 (龍貓) -->
+    <!-- 生活與靈感 (龍貓) -->
     <section id="personal" class="py-24 px-6 bg-slate-900/40 text-left text-left">
         <div class="max-w-6xl mx-auto flex flex-col items-center text-center text-left text-left">
-            <h2 class="text-3xl font-bold mb-4 tracking-tight text-white text-left">日常裡的靈感碎片</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-4xl mt-12 text-left text-left">
-                <div class="rounded-[2.5rem] overflow-hidden glass p-4 rotate-2 shadow-2xl bg-slate-800 text-left">
+            <h2 class="text-3xl font-bold mb-4 tracking-tight text-white text-left text-left">日常裡的靈感碎片</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-4xl mt-12 text-left text-left text-left">
+                <div class="rounded-[2.5rem] overflow-hidden glass p-4 rotate-2 shadow-2xl bg-slate-800 text-left text-left">
                     <img src="https://drive.google.com/thumbnail?id=1xPRuj2zFVI4IUZe4eMvMQevTeGXeJbf5&sz=w1600" alt="[生活感照片]" 
-                         class="rounded-3xl w-full aspect-square object-cover">
+                         class="rounded-3xl w-full aspect-square object-cover text-left text-left text-left">
                 </div>
                 <div class="text-left space-y-6 text-left text-left">
-                    <div class="glass p-8 rounded-3xl border-white/5 relative overflow-hidden group text-left">
-                        <div class="absolute -right-4 -bottom-4 opacity-5 group-hover:rotate-12 transition-transform"><i data-lucide="heart" size="100"></i></div>
+                    <div class="glass p-8 rounded-3xl border-white/5 relative overflow-hidden group text-left text-left">
+                        <div class="absolute -right-4 -bottom-4 opacity-5 group-hover:rotate-12 transition-transform text-left text-left text-left"><i data-lucide="heart" size="100"></i></div>
                         <h4 class="font-bold text-lg mb-4 text-white text-left text-left">生活中尋找靈感</h4>
-                        <p class="text-[14px] text-slate-400 leading-relaxed text-left text-left">
+                        <p class="text-[14px] text-slate-400 leading-relaxed text-left text-left text-left">
                             在混亂的開發節奏裡，養龍貓可以讓我保持心態寧靜，也更能去理解那些「無須言語」的需求。這種觀察力滲透進我的設計哲學：在建構互動系統時，多想一點使用者的隱性感受，讓科技不再冰冷，而是更貼近本能的直覺。
                         </p>
                     </div>
@@ -332,85 +429,84 @@
         </div>
     </section>
 
-    <!-- 底部核心區塊 -->
-    <section id="contact" class="py-32 px-6 relative text-center text-left text-left text-left">
-        <div class="max-w-6xl mx-auto glass p-12 md:p-20 rounded-[3.5rem] border-white/5 relative shadow-2xl overflow-hidden text-left">
-            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 text-left"></div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 tracking-tight text-white text-center">期待與您一同開啟科技創新的可能</h2>
-            <p class="text-slate-400 mb-20 max-w-xl mx-auto leading-relaxed text-sm text-center">我正積極尋找與 XR 開發、生成式 AI 應用相關的研究或職涯機會，期待與您聯繫。</p>
+    <!-- 底部核心資訊區塊 -->
+    <section id="contact" class="py-32 px-6 relative text-center text-left text-left">
+        <div class="max-w-6xl mx-auto glass p-12 md:p-20 rounded-[3.5rem] border-white/5 relative shadow-2xl overflow-hidden text-left text-left">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 text-left text-left"></div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 tracking-tight text-white text-center text-center">期待與您一同開啟科技創新的可能</h2>
+            <p class="text-slate-400 mb-20 max-w-xl mx-auto leading-relaxed text-sm text-center text-center">我正積極尋找與 XR 開發、生成式 AI 應用相關的研究或職涯機會，期待與您聯繫。</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start text-left text-left text-left">
                 <!-- Gmail -->
-                <a href="mailto:jiajia0268@gmail.com" class="flex flex-col items-center gap-6 group text-center">
-                    <div class="p-6 glass rounded-[2rem] group-hover:bg-blue-600/30 transition-all duration-300 group-hover:scale-110 shadow-xl border border-white/5 text-white text-center">
+                <a href="mailto:jiajia0268@gmail.com" class="flex flex-col items-center gap-6 group text-center text-center">
+                    <div class="p-6 glass rounded-[2rem] group-hover:bg-blue-600/30 transition-all duration-300 group-hover:scale-110 shadow-xl border border-white/5 text-white text-center text-center">
                         <i data-lucide="mail" size="32"></i>
                     </div>
-                    <div class="text-center text-center">
+                    <div class="text-center text-center text-center">
                         <span class="block text-xs font-bold tracking-widest text-slate-500 uppercase mb-2 tracking-widest text-center">Email Me</span>
                         <span class="text-[11px] font-medium text-slate-300 group-hover:text-blue-400 transition text-center text-center">jiajia0268@gmail.com</span>
                     </div>
                 </a>
                 
                 <!-- GitHub -->
-                <a href="https://github.com/jia0268/try" target="_blank" class="flex flex-col items-center gap-6 group text-center">
-                    <div class="p-6 glass rounded-[2rem] group-hover:bg-slate-700/50 transition-all duration-300 group-hover:scale-110 shadow-xl border border-white/5 text-white text-center">
+                <a href="https://github.com/jia0268/try" target="_blank" class="flex flex-col items-center gap-6 group text-center text-center">
+                    <div class="p-6 glass rounded-[2rem] group-hover:bg-slate-700/50 transition-all duration-300 group-hover:scale-110 shadow-xl border border-white/5 text-white text-center text-center">
                         <i data-lucide="graduation-cap" size="32"></i>
                     </div>
-                    <div class="text-center text-center">
+                    <div class="text-center text-center text-center text-center">
                         <span class="block text-xs font-bold tracking-widest text-slate-500 uppercase mb-2 tracking-widest text-center">Source Code</span>
-                        <span class="text-[11px] font-medium text-slate-300 group-hover:text-blue-400 transition text-center text-center">GitHub Portfolio</span>
+                        <span class="text-[11px] font-medium text-slate-300 group-hover:text-blue-400 transition text-center text-center text-center">GitHub Portfolio</span>
                     </div>
                 </a>
 
                 <!-- LIT Lab -->
                 <a href="https://lit.ilst.nthu.edu.tw/" target="_blank" class="flex flex-col items-center gap-6 group text-center text-center">
-                    <div class="p-6 glass rounded-[2rem] group-hover:bg-blue-600/30 transition-all duration-300 group-hover:scale-110 shadow-xl border border-white/5 text-white text-center">
+                    <div class="p-6 glass rounded-[2rem] group-hover:bg-blue-600/30 transition-all duration-300 group-hover:scale-110 shadow-xl border border-white/5 text-white text-center text-center">
                         <i data-lucide="microscope" size="32"></i>
                     </div>
-                    <div class="text-center text-center">
-                        <span class="block text-xs font-bold tracking-widest text-slate-500 uppercase mb-2 tracking-widest text-center">Current Research</span>
-                        <span class="text-[11px] font-medium text-slate-300 group-hover:text-blue-400 transition text-center">LIT Lab @NTHU</span>
+                    <div class="text-center text-center text-center text-center text-center">
+                        <span class="block text-xs font-bold tracking-widest text-slate-500 uppercase mb-2 tracking-widest text-center text-center">Current Research</span>
+                        <span class="text-[11px] font-medium text-slate-300 group-hover:text-blue-400 transition text-center text-center text-center">LIT Lab @NTHU</span>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-16 text-center text-slate-500 text-[10px] tracking-widest uppercase opacity-50 text-center">
+    <!-- 腳部 -->
+    <footer class="py-16 text-center text-slate-500 text-[10px] tracking-widest uppercase opacity-50 text-center text-center">
         <p>© 2026 Developed by 黃子珈 Jia0268. Built with NTHU Pride.</p>
     </footer>
 
-    <!-- Success Toast -->
-    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 glass px-8 py-4 rounded-full text-sm font-bold opacity-0 transition-all duration-500 translate-y-4 pointer-events-none shadow-2xl border border-blue-500/30 text-white text-left">
+    <!-- 通知 -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 glass px-8 py-4 rounded-full text-sm font-bold opacity-0 transition-all duration-500 translate-y-4 pointer-events-none shadow-2xl border border-blue-500/30 text-white text-left text-left">
         已成功複製連結！期待與您交流。
     </div>
 
     <script>
         lucide.createIcons();
 
-        // 影片播放邏輯
-        function playVideo() {
-            const poster = document.getElementById('videoPoster');
-            const container = document.getElementById('videoContainer');
-            const iframe = document.getElementById('videoIframe');
-            
-            iframe.src = "https://drive.google.com/file/d/1UAUYWzE6wIGY6tXKoe54_NyITV1xAzBu/preview?autoplay=1";
-            
-            poster.classList.add('opacity-0');
-            setTimeout(() => {
-                poster.style.display = 'none';
-                container.classList.remove('hidden');
-            }, 300);
+        // 處理 Innovation Playground 的左右滑動
+        function scrollSandbox(direction) {
+            const slider = document.getElementById('sandbox-slider');
+            const scrollAmount = 400; // 每次點擊滑動的像素
+            if (direction === 'left') {
+                slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
         }
 
+        // 分享按鈕複製邏輯
         function copyLink() {
+            const deployUrl = "https://jia0268.vercel.app/";
             const tempInput = document.createElement("input");
-            tempInput.value = window.location.href;
+            tempInput.value = deployUrl;
             document.body.appendChild(tempInput);
             tempInput.select();
             document.execCommand("copy");
             document.body.removeChild(tempInput);
+
             const toast = document.getElementById('toast');
             toast.classList.remove('opacity-0', 'translate-y-4');
             toast.classList.add('opacity-100', 'translate-y-0');
