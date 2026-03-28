@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黃子珈 | Jia0268 作品集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', 'Microsoft JhengHei', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-bg {
+            background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px -10px rgba(96, 165, 250, 0.3);
+        }
+
+        /* 影片容器與封面 */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            background: #000;
+        }
+        .video-wrapper iframe, .video-wrapper .poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1.5rem;
+            border: none;
+        }
+        .video-wrapper .poster {
+            z-index: 10;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+        .play-btn {
+            width: 72px;
+            height: 72px;
+            background: rgba(59, 130, 246, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    </style>
+</head>
+<body class="hero-bg text-left">
+
+    <!-- 導航列 -->
+    <nav class="fixed w-full z-50 glass shadow-2xl shadow-black/20">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center text-left">
+            <div class="text-2xl font-bold tracking-tighter gradient-text">Jia0268</div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-blue-400 transition">關於我</a>
+                <a href="#projects" class="hover:text-blue-400 transition">核心作品</a>
+                <a href="#experience" class="hover:text-blue-400 transition">學經歷</a>
+                <a href="#certificates" class="hover:text-blue-400 transition">榮譽證明</a>
+                <a href="#contact" class="hover:text-blue-400 transition">聯繫方式</a>
+            </div>
+            <button onclick="copyLink()" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition shadow-lg shadow-blue-500/20 tracking-widest font-bold uppercase">Share</button>
+        </div>
+    </nav>
+
+    <!-- 英雄區 (Hero) -->
+    <section id="about" class="relative min-h-screen flex items-center pt-32 pb-20 px-6 overflow-hidden text-left">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[150px]"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[150px]"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
+            <div>
+                <div class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-blue-400 uppercase bg-blue-400/10 border border-blue-400/20 rounded-full">
+                    Innovation & Curiosity
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-8 leading-tight text-white text-left">
+                    不受拘束的<br>
+                    <span class="gradient-text">跨域創新者</span>
+                </h1>
+                <div class="text-lg text-slate-400 mb-10 max-w-xl leading-relaxed space-y-4 text-left">
+                    <p>我是 <span class="text-white font-bold">黃子珈</span>，現就讀於 <span class="text-white border-b border-blue-500/50">國立清華大學學習科學與科技研究所</span>。</p>
+                    <p>憑藉人工智慧的開發背景，我致力於透過沉浸式 XR 技術與學習理論，開發生成式 AI 融入教學的智慧互動體驗。</p>
+                    <p>我對新興科技充滿好奇，喜歡挑戰創新，熱衷於探索各類新奇事物。對我而言，技術不只是解決問題的工具，更是實踐不受拘束的創意、打破現實邊界的媒介。</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-3 rounded-xl font-semibold transition flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20">
+                        查看核心專案 <i data-lucide="chevron-right" size="18"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-center lg:justify-end relative">
+                <!-- 第一張照片比例 4:5 -->
+                <div class="relative w-full max-w-[340px] aspect-[4/5] group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-3xl rotate-3 opacity-20 group-hover:rotate-1 transition-transform duration-500"></div>
+                    <div class="relative w-full h-full rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl bg-slate-800">
+                        <img src="https://drive.google.com/thumbnail?id=1WcN8Amx0ih4WrfAelfB38xifn0NNuxJa&sz=w1600" alt="[黃子珈發表照片]" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 數據里程碑 -->
+    <section class="py-16 px-6 relative text-left">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            <div class="glass p-6 rounded-3xl text-center card-hover border-blue-500/20">
+                <div class="text-blue-400 mb-3 flex justify-center"><i data-lucide="award" size="32"></i></div>
+                <div class="text-2xl font-bold mb-1">第 1 名</div>
+                <div class="text-slate-400 text-[11px] font-medium leading-relaxed uppercase tracking-widest text-center">智慧創新競賽</div>
+            </div>
+            <div class="glass p-6 rounded-3xl text-center card-hover border-purple-500/20">
+                <div class="text-purple-400 mb-3 flex justify-center"><i data-lucide="mic" size="32"></i></div>
+                <div class="text-2xl font-bold mb-1">Best Presentation</div>
+                <div class="text-slate-400 text-[11px] font-medium leading-relaxed uppercase tracking-widest text-center">BERA Conference</div>
+            </div>
+            <div class="glass p-6 rounded-3xl text-center card-hover border-emerald-500/20 text-center">
+                <div class="text-emerald-400 mb-3 flex justify-center"><i data-lucide="star" size="32"></i></div>
+                <div class="text-2xl font-bold mb-1 text-emerald-400">系排一</div>
+                <div class="text-slate-400 text-[11px] font-medium leading-relaxed uppercase tracking-widest">銘傳 AI 系 (1/84)</div>
+            </div>
+            <div class="glass p-6 rounded-3xl text-center card-hover border-yellow-500/20 text-center">
+                <div class="text-yellow-400 mb-3 flex justify-center"><i data-lucide="line-chart" size="32"></i></div>
+                <div class="text-2xl font-bold mb-1 text-yellow-500">GPA 4.14</div>
+                <div class="text-slate-400 text-[11px] font-medium leading-relaxed uppercase tracking-widest">清大碩士班 (Max 4.3)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心專案 -->
+    <section id="projects" class="py-24 px-6 bg-slate-900/40 text-left">
+        <div class="max-w-6xl mx-auto text-left">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 border-l-4 border-blue-500 pl-6 text-left">
+                <div>
+                    <h2 class="text-4xl font-bold mb-2 tracking-tight text-white text-left">Build, Brick & Break</h2>
+                    <p class="text-slate-400 text-lg text-left">Meta Quest 3 沉浸式樂高拼搭互動系統</p>
+                </div>
+                <div class="text-sm font-mono text-blue-400 mb-2">XR Interaction Design</div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 glass p-8 rounded-[2.5rem] border-white/5 mb-16 shadow-2xl text-left">
+                <div class="lg:col-span-8 overflow-hidden bg-black shadow-inner">
+                    <div class="video-wrapper">
+                        <div id="videoPoster" class="poster" onclick="playVideo()">
+                            <img src="https://drive.google.com/thumbnail?id=1rts0fQIz9__nZUliZgXErjdZuBQ42FcP&sz=w1600" alt="[影片封面]" class="w-full h-full object-cover opacity-60">
+                            <div class="play-btn"><i data-lucide="play" fill="white" size="28" class="text-white ml-1"></i></div>
+                        </div>
+                        <div id="videoContainer" class="hidden w-full h-full">
+                            <iframe id="videoIframe" src="" allow="autoplay; encrypted-media"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-4 flex flex-col justify-center text-left">
+                    <div class="flex flex-wrap gap-2 mb-8 text-[9px] font-bold tracking-widest uppercase">
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full border border-blue-500/10">#UNITY</span>
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full border border-blue-500/10">#STEAM</span>
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full border border-blue-500/10">#META SDK</span>
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full border border-blue-500/10">#HAND TRACKING</span>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-8 leading-relaxed italic border-l-2 border-slate-700 pl-4 text-left">
+                        即使身處虛擬世界，依舊能體驗到真實的拼裝樂趣。
+                    </p>
+                    <p class="text-[13px] text-slate-400 leading-relaxed mb-8 text-left">
+                        結合手勢辨識與手部抓取，打造具遊戲性的 STEAM 學習工具。提供引導與自由模式，並設計「更衣隧道」讓使用者化身樂高小人，在虛擬城市中與角色展開沉浸互動。
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-left">
+                            <i data-lucide="sparkles" class="text-blue-400" size="16"></i>
+                            <span class="text-xs text-white">直覺化手部追蹤交互</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-left">
+                            <i data-lucide="graduation-cap" class="text-blue-400" size="16"></i>
+                            <span class="text-xs text-white">STEAM 教育實作引導</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                <div class="group relative rounded-3xl overflow-hidden glass border-white/10 aspect-[4/3] bg-slate-800">
+                    <img src="https://drive.google.com/thumbnail?id=1ug5_k8AkDmV5f7PKutr0i4nmLclCg0p4&sz=w1600" alt="[拼搭實作展示]" 
+                         class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-700">
+                </div>
+                <div class="group relative rounded-3xl overflow-hidden glass border-white/10 aspect-[4/3] bg-slate-800">
+                    <img src="https://drive.google.com/thumbnail?id=1HMWsG0Mm98tV2NmXaG9cUheamTY8lxZL&sz=w1600" alt="[專案展示交流]" 
+                         class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-700">
+                </div>
+                <div class="glass p-8 rounded-3xl flex flex-col justify-center border-purple-500/10 text-left">
+                    <h4 class="text-lg font-bold mb-4 text-white text-left">跨領域教育整合</h4>
+                    <p class="text-[12px] text-slate-400 leading-relaxed text-left">
+                        在作品中融入學習科學的「做中學」理念，透過數位孿生技術降低硬體損耗，同時保留空間建構的認知反饋。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 榮譽與成果證明 -->
+    <section id="certificates" class="py-24 px-6 max-w-6xl mx-auto text-left">
+        <h2 class="text-3xl font-bold mb-16 flex items-center gap-4 text-white text-left">
+            <i data-lucide="shield-check" class="text-blue-400"></i> 榮譽與成果證明
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+            <div class="flex flex-col gap-6 group text-left">
+                <div class="relative aspect-[1.414/1] rounded-2xl overflow-hidden glass border-2 border-white/5 shadow-xl group-hover:border-blue-500/30 transition-all duration-500">
+                    <img src="https://drive.google.com/thumbnail?id=1CfgQ7_bm9zW7vyplZbpW_ijfUB-pGbVJ&sz=w1600" alt="[比賽獎狀]" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <a href="https://drive.google.com/file/d/1CfgQ7_bm9zW7vyplZbpW_ijfUB-pGbVJ/view" target="_blank" class="bg-blue-600 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest">Open File</a>
+                    </div>
+                </div>
+                <div class="px-2 text-left">
+                    <h5 class="text-lg font-bold text-white text-left">智慧創新競賽 第一名獎狀</h5>
+                    <p class="text-xs text-slate-500 mt-2 text-left">肯定體感交互與技術創新之整合力。</p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6 group text-left">
+                <div class="relative aspect-[1.414/1] rounded-2xl overflow-hidden glass border-2 border-white/5 shadow-xl group-hover:border-blue-500/30 transition-all duration-500">
+                    <img src="https://drive.google.com/thumbnail?id=1vlRpiooNOgYO1ib_NswsF_JavNYNycdi&sz=w1600" alt="[發表獎狀]" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <a href="https://drive.google.com/file/d/1vlRpiooNOgYO1ib_NswsF_JavNYNycdi/view" target="_blank" class="bg-purple-600 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest">Open File</a>
+                    </div>
+                </div>
+                <div class="px-2 text-left">
+                    <h5 class="text-lg font-bold text-white text-left text-left">BERA Best Presentation Award</h5>
+                    <p class="text-xs text-slate-500 mt-2 text-left text-left">證明在國際學術研討會中具備優異的發表與論述品質。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 學經歷 -->
+    <section id="experience" class="py-24 px-6 max-w-6xl mx-auto border-b border-white/5 text-left text-left">
+        <h2 class="text-3xl font-bold mb-16 flex items-center gap-4 text-white text-left">
+            <i data-lucide="graduation-cap" class="text-blue-400"></i> 學經歷與研究背景
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 text-left">
+            <!-- NTHU -->
+            <div class="relative glass p-10 rounded-3xl border-l-8 border-blue-500 overflow-hidden group flex flex-col justify-between text-left">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-110 transition-transform duration-700"></div>
+                <div class="text-left text-left">
+                    <div class="font-bold text-2xl text-white mb-2 text-left text-left">國立清華大學 (NTHU)</div>
+                    <div class="text-blue-400 font-semibold text-base mb-2 text-left text-left">學習科學與科技研究所 | 碩士在讀</div>
+                    <div class="inline-block px-3 py-1 mb-6 text-[10px] font-bold bg-blue-500/10 text-blue-400 rounded-lg tracking-widest uppercase border border-blue-500/20">GPA 4.14 / 4.3</div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8 text-left text-left">
+                        探討生成式 AI 輔助元宇宙沉浸式環境中學習，如何影響學習者認知路徑，並致力於開發更具個人化與直覺性的智慧教學引導系統。
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-3 text-left">
+                    <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">XR LEARNING</div>
+                    <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">C# & Unity</div>
+                    <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">DATA ANALYSIS</div>
+                    <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">GEN AI</div>
+                </div>
+            </div>
+            <!-- MCU -->
+            <div class="relative glass p-10 rounded-3xl border-l-8 border-emerald-500/30 overflow-hidden flex flex-col justify-between group text-left">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-110 transition-transform duration-700"></div>
+                <div class="text-left text-left">
+                    <div class="font-bold text-2xl text-white mb-2 text-left text-left">銘傳大學 (MCU)</div>
+                    <div class="text-emerald-400 font-semibold text-base mb-2 text-left text-left">人工智慧應用學系 | 學士畢業</div>
+                    <div class="inline-block px-3 py-1 mb-6 text-[10px] font-bold bg-emerald-500/10 text-emerald-400 rounded-lg tracking-widest uppercase border border-emerald-500/20">系排一 (1/84)</div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 text-left text-left">
+                        專注於 C# 程式開發與 電腦圖學 的實踐，並具備豐富的 資料分析、視覺化 及 網頁開發 經驗。具備將模型實作與前端應用整合的能力，是目前 XR 專案開發最強大的技術後盾。
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-3 text-left">
+                    <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">C# & Unity</div>
+                    <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">COMPUTER GRAPHICS</div>
+                    <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">WEB DEVELOPMENT</div>
+                    <div class="text-[10px] font-mono border border-white/10 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">DATA VISUALIZATION</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 日常靈感碎片 (龍貓) -->
+    <section id="personal" class="py-24 px-6 bg-slate-900/40 text-left text-left">
+        <div class="max-w-6xl mx-auto flex flex-col items-center text-center text-left text-left">
+            <h2 class="text-3xl font-bold mb-4 tracking-tight text-white text-left">日常裡的靈感碎片</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-4xl mt-12 text-left text-left">
+                <div class="rounded-[2.5rem] overflow-hidden glass p-4 rotate-2 shadow-2xl bg-slate-800 text-left">
+                    <img src="https://drive.google.com/thumbnail?id=1xPRuj2zFVI4IUZe4eMvMQevTeGXeJbf5&sz=w1600" alt="[生活感照片]" 
+                         class="rounded-3xl w-full aspect-square object-cover">
+                </div>
+                <div class="text-left space-y-6 text-left text-left">
+                    <div class="glass p-8 rounded-3xl border-white/5 relative overflow-hidden group text-left">
+                        <div class="absolute -right-4 -bottom-4 opacity-5 group-hover:rotate-12 transition-transform"><i data-lucide="heart" size="100"></i></div>
+                        <h4 class="font-bold text-lg mb-4 text-white text-left text-left">生活中尋找靈感</h4>
+                        <p class="text-[14px] text-slate-400 leading-relaxed text-left text-left">
+                            在混亂的開發節奏裡，養龍貓可以讓我保持心態寧靜，也更能去理解那些「無須言語」的需求。這種觀察力滲透進我的設計哲學：在建構互動系統時，多想一點使用者的隱性感受，讓科技不再冰冷，而是更貼近本能的直覺。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部核心區塊 -->
+    <section id="contact" class="py-32 px-6 relative text-center text-left text-left text-left">
+        <div class="max-w-6xl mx-auto glass p-12 md:p-20 rounded-[3.5rem] border-white/5 relative shadow-2xl overflow-hidden text-left">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 text-left"></div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 tracking-tight text-white text-center">期待與您一同開啟科技創新的可能</h2>
+            <p class="text-slate-400 mb-20 max-w-xl mx-auto leading-relaxed text-sm text-center">我正積極尋找與 XR 開發、生成式 AI 應用相關的研究或職涯機會，期待與您聯繫。</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start text-left">
+                <!-- Gmail -->
+                <a href="mailto:jiajia0268@gmail.com" class="flex flex-col items-center gap-6 group text-center">
+                    <div class="p-6 glass rounded-[2rem] group-hover:bg-blue-600/30 transition-all duration-300 group-hover:scale-110 shadow-xl border border-white/5 text-white text-center">
+                        <i data-lucide="mail" size="32"></i>
+                    </div>
+                    <div class="text-center text-center">
+                        <span class="block text-xs font-bold tracking-widest text-slate-500 uppercase mb-2 tracking-widest text-center">Email Me</span>
+                        <span class="text-[11px] font-medium text-slate-300 group-hover:text-blue-400 transition text-center text-center">jiajia0268@gmail.com</span>
+                    </div>
+                </a>
+                
+                <!-- GitHub -->
+                <a href="https://github.com/jia0268/try" target="_blank" class="flex flex-col items-center gap-6 group text-center">
+                    <div class="p-6 glass rounded-[2rem] group-hover:bg-slate-700/50 transition-all duration-300 group-hover:scale-110 shadow-xl border border-white/5 text-white text-center">
+                        <i data-lucide="graduation-cap" size="32"></i>
+                    </div>
+                    <div class="text-center text-center">
+                        <span class="block text-xs font-bold tracking-widest text-slate-500 uppercase mb-2 tracking-widest text-center">Source Code</span>
+                        <span class="text-[11px] font-medium text-slate-300 group-hover:text-blue-400 transition text-center text-center">GitHub Portfolio</span>
+                    </div>
+                </a>
+
+                <!-- LIT Lab -->
+                <a href="https://lit.ilst.nthu.edu.tw/" target="_blank" class="flex flex-col items-center gap-6 group text-center text-center">
+                    <div class="p-6 glass rounded-[2rem] group-hover:bg-blue-600/30 transition-all duration-300 group-hover:scale-110 shadow-xl border border-white/5 text-white text-center">
+                        <i data-lucide="microscope" size="32"></i>
+                    </div>
+                    <div class="text-center text-center">
+                        <span class="block text-xs font-bold tracking-widest text-slate-500 uppercase mb-2 tracking-widest text-center">Current Research</span>
+                        <span class="text-[11px] font-medium text-slate-300 group-hover:text-blue-400 transition text-center">LIT Lab @NTHU</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 text-center text-slate-500 text-[10px] tracking-widest uppercase opacity-50 text-center">
+        <p>© 2026 Developed by 黃子珈 Jia0268. Built with NTHU Pride.</p>
+    </footer>
+
+    <!-- Success Toast -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 glass px-8 py-4 rounded-full text-sm font-bold opacity-0 transition-all duration-500 translate-y-4 pointer-events-none shadow-2xl border border-blue-500/30 text-white text-left">
+        已成功複製連結！期待與您交流。
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // 影片播放邏輯
+        function playVideo() {
+            const poster = document.getElementById('videoPoster');
+            const container = document.getElementById('videoContainer');
+            const iframe = document.getElementById('videoIframe');
+            
+            iframe.src = "https://drive.google.com/file/d/1UAUYWzE6wIGY6tXKoe54_NyITV1xAzBu/preview?autoplay=1";
+            
+            poster.classList.add('opacity-0');
+            setTimeout(() => {
+                poster.style.display = 'none';
+                container.classList.remove('hidden');
+            }, 300);
+        }
+
+        function copyLink() {
+            const tempInput = document.createElement("input");
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-4');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
